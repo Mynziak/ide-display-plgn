@@ -1,0 +1,48 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>com.mynziak.ide-display-plgn</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>Ide-display-plgn</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="minzyak@gmail.com" url="https://github.com/Mynziak">Mynziak</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description>
+        - Display the installed version of the Kotlin plugin.
+        - Display all Gutter Icons present in the currently opened file.
+        - Display information about the currently selected UI Component.
+    </description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+
+    </extensions>
+    <actions>
+        <action id="com.mynziak.idedisplayplgn.DisplayVersion" class="com.mynziak.idedisplayplgn.DisplayVersion"
+                text="Display the version of the Kotlin"
+                description="Display the installed version of the Kotlin plugin">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+        </action>
+        <action id="com.mynziak.idedisplayplgn.DisplayGutterIcons" class="com.mynziak.idedisplayplgn.DisplayGutterIcons"
+                text="Display all Gutter Icons"
+                description="Display all Gutter Icons present in the currently opened file">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+        </action>
+        <action id="com.mynziak.idedisplayplgn.DisplaySelectedUIComponentAction"
+                class="com.mynziak.idedisplayplgn.DisplaySelectedUIComponentAction" text="Display UI Component info"
+                description="Display information about the currently selected UI Component. ">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+        </action>
+    </actions>
+</idea-plugin>
