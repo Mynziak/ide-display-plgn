@@ -29,7 +29,7 @@
 
     </extensions>
     <actions>
-        <action id="com.mynziak.idedisplayplgn.DisplayVersion" class="com.mynziak.idedisplayplgn.DisplayVersion"
+        <action id="com.mynziak.idedisplayplgn.DisplayKotlinVersion" class="com.mynziak.idedisplayplgn.DisplayKotlinVersion"
                 text="Display Kotlin plugin version"
                 description="Display the installed version of the Kotlin plugin">
             <add-to-group group-id="ToolsMenu" anchor="first"/>
@@ -38,10 +38,10 @@
                 text="Display Gutter Icons"
                 description="Display all Gutter Icons in the currently opened file">
             <add-to-group group-id="ToolsMenu" anchor="after"
-                          relative-to-action="com.mynziak.idedisplayplgn.DisplayVersion"/>
+                          relative-to-action="com.mynziak.idedisplayplgn.DisplayKotlinVersion"/>
         </action>
-        <action id="com.mynziak.idedisplayplgn.DisplaySelectedUiComponentAction"
-                class="com.mynziak.idedisplayplgn.DisplaySelectedUiComponentAction" text="Display UI Component Info"
+        <action id="com.mynziak.idedisplayplgn.DisplaySelectedUiComponent"
+                class="com.mynziak.idedisplayplgn.DisplaySelectedUiComponent" text="Display UI Component Info"
                 description="Display information about the currently selected UI Component. ">
             <add-to-group group-id="ToolsMenu" anchor="after"
                           relative-to-action="com.mynziak.idedisplayplgn.DisplayGutterIcons"/>

@@ -7,9 +7,8 @@ import com.intellij.openapi.fileEditor.FileEditorManager
 import com.intellij.openapi.ui.Messages
 import javax.swing.JComponent
 
-class DisplaySelectedUiComponentAction : AnAction() {
+class DisplaySelectedUiComponent : AnAction() {
     override fun actionPerformed(e: AnActionEvent) {
-
         val project = e.getData(CommonDataKeys.PROJECT)
         val fileEditor = FileEditorManager.getInstance(project!!).getSelectedEditor()
         if (fileEditor != null) {

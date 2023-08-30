@@ -5,7 +5,7 @@ import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.ui.Messages
 
-class DisplayVersion : AnAction() {
+class DisplayKotlinVersion : AnAction() {
     override fun actionPerformed(e: AnActionEvent) {
         val kotlinPlugins = PluginManager.getPlugins().filter { it.pluginId.idString == "org.jetbrains.kotlin" }
 

@@ -11,11 +11,11 @@ import com.intellij.openapi.ui.Messages
 class DisplayGutterIcons : AnAction() {
 
     override fun actionPerformed(e: AnActionEvent) {
-        val editor: Editor = e.getRequiredData(CommonDataKeys.EDITOR)
+        val editor = e.getRequiredData(CommonDataKeys.EDITOR)
         val document = editor.document
         val project = e.getRequiredData(CommonDataKeys.PROJECT)
 
-        val editorGutter = editor.gutter //contains all gutters (including breakpoints) in myLineToGutterRenderers
+        val editorGutter = editor.gutter //TODO: It contains all gutters (including breakpoints) in myLineToGutterRenderers
 
         val lineMarkers = DaemonCodeAnalyzerImpl.getLineMarkers(document, project)
         val iconNames = lineMarkers.mapNotNull { lineMarker ->
