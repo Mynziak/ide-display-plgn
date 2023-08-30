@@ -15,17 +15,18 @@ class DisplayGutterIcons : AnAction() {
         val document = editor.document
         val project = e.getRequiredData(CommonDataKeys.PROJECT)
 
-        val lineMarkers = DaemonCodeAnalyzerImpl.getLineMarkers(document, project)
+        val editorGutter = editor.gutter //contains all gutters (including breakpoints) in myLineToGutterRenderers
 
+        val lineMarkers = DaemonCodeAnalyzerImpl.getLineMarkers(document, project)
         val iconNames = lineMarkers.mapNotNull { lineMarker ->
-            lineMarker.icon?.toString()
+            lineMarker.icon?.toString()?.substringAfterLast("/")?.substringBeforeLast(".") // Extract icon name
         }
 
         if (iconNames.isNotEmpty()) {
             val message = iconNames.joinToString("\n")
             Messages.showInfoMessage(message, "Gutter Icons in currently opened file:")
         } else {
-            Messages.showInfoMessage("Gutter Icons are absent in the currently opened file!", "Gutter Icons")
+            Messages.showInfoMessage("Gutter Icons are absent in opened file!", "Gutter Icons")
         }
     }
 }

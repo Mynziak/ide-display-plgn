@@ -30,19 +30,21 @@
     </extensions>
     <actions>
         <action id="com.mynziak.idedisplayplgn.DisplayVersion" class="com.mynziak.idedisplayplgn.DisplayVersion"
-                text="Display the version of the Kotlin"
+                text="Display Kotlin plugin version"
                 description="Display the installed version of the Kotlin plugin">
             <add-to-group group-id="ToolsMenu" anchor="first"/>
         </action>
         <action id="com.mynziak.idedisplayplgn.DisplayGutterIcons" class="com.mynziak.idedisplayplgn.DisplayGutterIcons"
-                text="Display all Gutter Icons"
-                description="Display all Gutter Icons present in the currently opened file">
-            <add-to-group group-id="ToolsMenu" anchor="first"/>
+                text="Display Gutter Icons"
+                description="Display all Gutter Icons in the currently opened file">
+            <add-to-group group-id="ToolsMenu" anchor="after"
+                          relative-to-action="com.mynziak.idedisplayplgn.DisplayVersion"/>
         </action>
-        <action id="com.mynziak.idedisplayplgn.DisplaySelectedUIComponentAction"
-                class="com.mynziak.idedisplayplgn.DisplaySelectedUIComponentAction" text="Display UI Component info"
+        <action id="com.mynziak.idedisplayplgn.DisplaySelectedUiComponentAction"
+                class="com.mynziak.idedisplayplgn.DisplaySelectedUiComponentAction" text="Display UI Component Info"
                 description="Display information about the currently selected UI Component. ">
-            <add-to-group group-id="ToolsMenu" anchor="first"/>
+            <add-to-group group-id="ToolsMenu" anchor="after"
+                          relative-to-action="com.mynziak.idedisplayplgn.DisplayGutterIcons"/>
         </action>
     </actions>
 </idea-plugin>
