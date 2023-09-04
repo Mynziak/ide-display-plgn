@@ -1,41 +1,29 @@
 package com.mynziak.idedisplayplgn
 
-import com.intellij.openapi.actionSystem.AnAction
-import com.intellij.openapi.actionSystem.AnActionEvent
-import com.intellij.openapi.actionSystem.CommonDataKeys
+import com.intellij.openapi.actionSystem.*
+
 import com.intellij.openapi.fileEditor.FileEditorManager
 import com.intellij.openapi.ui.Messages
-import javax.swing.JComponent
+
 
 class DisplaySelectedUiComponent : AnAction() {
     override fun actionPerformed(e: AnActionEvent) {
-        val project = e.getData(CommonDataKeys.PROJECT)
-        val fileEditor = FileEditorManager.getInstance(project!!).getSelectedEditor()
-        if (fileEditor != null) {
-            // Get the focused component within the file editor:
-            val focusedComponent = fileEditor.preferredFocusedComponent
+        val project = e.project ?: return showErrorMessage("Please open a project!")
+        val fileEditorManager = FileEditorManager.getInstance(project)
 
-            if (focusedComponent != null) {
-                val uiInfo = extractUiComponentInfo(focusedComponent)
-                Messages.showInfoMessage(uiInfo, "Selected UI Component Information")
-            } else {
-                Messages.showInfoMessage("No UI component found at the selected location.", "UI Component Information")
-            }
+        val guiEditor =
+            fileEditorManager.selectedEditor ?: return showErrorMessage("Open a file with UI components in editor!")
+
+        val contentPane = guiEditor.preferredFocusedComponent?.rootPane?.contentPane
+
+        if (contentPane != null) {
+            Messages.showInfoMessage("Selected UI Component: $contentPane", "UI Component Info")
         } else {
-            Messages.showInfoMessage(
-                "No editor is currently active.",
-                "UI Component Information"
-            )
+            showErrorMessage("UI Component is not selected!")
         }
     }
 
-    private fun extractUiComponentInfo(component: JComponent): String {
-        val componentInfo = StringBuilder()
-        componentInfo.append("Component class name: ${component.javaClass.name}\n")
-        componentInfo.append("uiClassID: ${component.uiClassID}\n")
-        componentInfo.append("TooltipText: ${component.toolTipText}\n")
-
-        return componentInfo.toString()
+    private fun showErrorMessage(message: String) {
+        Messages.showWarningDialog(message, "Error")
     }
 }
-

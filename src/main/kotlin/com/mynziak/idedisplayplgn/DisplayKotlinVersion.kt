@@ -10,11 +10,10 @@ class DisplayKotlinVersion : AnAction() {
         val kotlinPlugins = PluginManager.getPlugins().filter { it.pluginId.idString == "org.jetbrains.kotlin" }
 
         if (kotlinPlugins.isNotEmpty()) {
-            val kotlinPlugin = kotlinPlugins.first()
-            val version = kotlinPlugin.version ?: "Not installed!"
+            val version = kotlinPlugins.first().version
             Messages.showInfoMessage("Installed Kotlin plugin version: $version", "Kotlin Plugin Version")
         } else {
-            Messages.showInfoMessage("Kotlin plugin is not installed!", "Kotlin Plugin Version")
+            Messages.showWarningDialog("Kotlin plugin is not installed!", "Error")
         }
     }
 }

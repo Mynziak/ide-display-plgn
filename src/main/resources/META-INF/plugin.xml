@@ -46,5 +46,10 @@
             <add-to-group group-id="ToolsMenu" anchor="after"
                           relative-to-action="com.mynziak.idedisplayplgn.DisplayGutterIcons"/>
         </action>
+        <action id="com.mynziak.idedisplayplgn.DisplayBreakpoints"
+                class="com.mynziak.idedisplayplgn.DisplayBreakpoints" text="Display Breakpoints">
+            <add-to-group group-id="ToolsMenu" anchor="after"
+                          relative-to-action="com.mynziak.idedisplayplgn.DisplaySelectedUiComponent"/>
+        </action>
     </actions>
 </idea-plugin>

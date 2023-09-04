@@ -9,27 +9,34 @@ import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.ui.Messages
 
 class DisplayGutterIcons : AnAction() {
-
     override fun actionPerformed(e: AnActionEvent) {
-        val editor = e.getRequiredData(CommonDataKeys.EDITOR)
-        val document = editor.document
         val project = e.getRequiredData(CommonDataKeys.PROJECT)
+        val editor = e.getData(CommonDataKeys.EDITOR)
+        val document = editor?.document
 
-        val editorGutter = editor.gutter //TODO: It contains all gutters (including breakpoints) in myLineToGutterRenderers
-
-        val lineMarkers = DaemonCodeAnalyzerImpl.getLineMarkers(document, project)
-        val iconNames = lineMarkers.mapNotNull { lineMarker ->
-            lineMarker.icon?.toString()?.substringAfterLast("/")?.substringBeforeLast(".") // Extract icon name
+        // Display error if no project or no gutter-supported file is opened in the editor
+        if (editor == null || document == null) {
+            return Messages.showWarningDialog("Please open the file which supports Gutters!", "Error")
         }
 
-        if (iconNames.isNotEmpty()) {
-            val message = iconNames.joinToString("\n")
+        // Retrieve Gutter Icons information for the currently opened file
+        val lineMarkers = DaemonCodeAnalyzerImpl.getLineMarkers(document, project)
+
+        val gutterInfoList = lineMarkers.mapNotNull { lineMarker ->
+            val lineNumber = editor.offsetToLogicalPosition(lineMarker.startOffset).line + 1
+
+            // Extract Gutter Icon's name
+            val iconName = lineMarker.icon?.toString()?.substringAfterLast("/")?.substringBeforeLast(".")
+            iconName?.let { "Line $lineNumber: $it" }
+        }
+
+        if (gutterInfoList.isNotEmpty()) {
+            val message = gutterInfoList.joinToString("\n")
             Messages.showInfoMessage(message, "Gutter Icons in currently opened file:")
         } else {
             Messages.showInfoMessage("Gutter Icons are absent in opened file!", "Gutter Icons")
         }
     }
 }
-
 
 

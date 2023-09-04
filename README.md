@@ -4,11 +4,13 @@
 This custom IntelliJ IDEA plugin is developed for version 2023.2 using the Kotlin programming language. The plugin provides three distinct actions accessible from the `Tools` dropdown menu to display various information within the IDE.
 
 ## Implemented Actions
-- [ ] Action 1: Click on "Display Kotlin plugin version" in the `Tools` menu and verify the displayed Kotlin plugin version.
+- [ ] Action 1: Click on `Display Kotlin plugin version` in the `Tools` menu and verify the displayed Kotlin plugin version.
 
-- [ ] Action 2: Open a file with Gutter Icons, click on "Display Gutter Icons" in the `Tools` menu, and ensure that all Gutter Icons present in the file are displayed.
+- [ ] Action 2: Open a file with Gutter Icons, click on `Display Gutter Icons` in the `Tools` menu, and ensure that all Gutter Icons present in the file are displayed.
 
-- [ ] Action 3: Select a UI Component within the editor, click on "Display UI Component Info" in the `Tools` menu, and confirm that relevant information about the selected UI Component is shown.
+- [ ] Action 3: Select a UI Component within the editor, click on `Display UI Component Info` in the `Tools` menu, and confirm that relevant information about the selected UI Component is shown.
+
+- [ ] Action 4: Click on `Display Breakpoints` in the `Tools` menu and verify that the displayed list of all breakpoints in the currently opened project.
 
 ## Installation and Usage
 
@@ -27,13 +29,13 @@ To install and test this plugin:
 
 ### Action 1: Display Installed Kotlin Plugin Version
 
-1. Open any file in the project.
+1. Open any project.
 2. Go to `Tools` > `Display Kotlin plugin version`.
 3. Popup will show the installed Kotlin plugin version.
 
 ### Action 2: Display Gutter Icons
 
-1. Open the file which contains gutter icons like `run` or `overriding methods`.
+1. Open the file which contains Gutter Icons like `run` or `overriding methods`.
 2. Go to `Tools` > `Display Gutter Icons`.
 3. Popup will show the list of the gutter icon names in the file.
 
@@ -44,7 +46,18 @@ To install and test this plugin:
 3. Go to `Tools` > `Display UI Component Info`.
 4. A dialog will show its class name, `uiClassID`, and tooltip.
 
-## Useful Information
+### Action 4: Display Breakpoints
+
+1. Open any project with files that have breakpoints set.
+2. Go to `Tools` > `Display Breakpoints`.
+3. A dialog will show a list of all breakpoints in the currently opened project.
+
+## Checklist for Validating Plugin Functionality
+Refer to the [CHECKLIST.md](docs/CHECKLIST.md) for detailed test scenarios.
+
+
+
+#### Useful Information
 For guidance on plugin development for IntelliJ IDEA, refer to the official documentation at [IntelliJ IDEA Plugin Development Documentation](https://plugins.jetbrains.com/docs/intellij/welcome.html).
 
-Additionally, explore the classes `AnActionEvent`, `CommonDataKeys`, `PluginManager`, `FileEditorManager`, and `DaemonCodeAnalyzerImpl` to understand and utilize the provided tools for your development process.
+Additionally, explore the classes `AnActionEvent`, `CommonDataKeys`, `PluginManager`, `FileEditorManager`, `DaemonCodeAnalyzerImpl`, `XDebuggerManager` to understand and utilize the provided tools for your development process.
