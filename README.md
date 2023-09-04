@@ -29,22 +29,22 @@ To install and test this plugin:
 
 ### Action 1: Display Installed Kotlin Plugin Version
 
-1. Open any project.
+1. Open project with installed Kotlin plugin.
 2. Go to `Tools` > `Display Kotlin plugin version`.
 3. Popup will show the installed Kotlin plugin version.
 
 ### Action 2: Display Gutter Icons
 
-1. Open the file which contains Gutter Icons like `run` or `overriding methods`.
+1. Open the file which contains Gutter Icons  (e.g. `run` or `overriding methods`).
 2. Go to `Tools` > `Display Gutter Icons`.
-3. Popup will show the list of the gutter icon names in the file.
+3. Popup will show the list of the gutter icons in the opened file.
 
 ### Action 3: Display UI Component Info
 
 1. Open the file which contains UI components.
 2. Select any UI component in the editor (e.g., checkbox, button).
 3. Go to `Tools` > `Display UI Component Info`.
-4. A dialog will show its class name, `uiClassID`, and tooltip.
+4. A dialog will show relevant UI component information.
 
 ### Action 4: Display Breakpoints
 
