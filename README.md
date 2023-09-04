@@ -27,6 +27,10 @@ To install and test this plugin:
 
 - In the new IntelliJ IDEA instance with the loaded plugin, create or open a project.
 
+### How to Use the Plugin (Demo)
+
+![Demo Gif](docs/IDE_plugin_usage.gif)
+
 ### Action 1: Display Installed Kotlin Plugin Version
 
 1. Open project with installed Kotlin plugin.
